@@ -1,135 +1,44 @@
 .card-editor {
-  width: 320px;
+  width: 340px;
   flex-shrink: 0;
-  background: #222;
-  border: 1px solid #444;
+  background: #1e1e1e;
+  border: 1px solid #3a3a3a;
   border-radius: 8px;
-  padding: 1.25rem;
-  overflow-y: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   max-height: calc(100vh - 120px);
 }
 
-.card-editor h2 {
-  font-size: 1.1rem;
-  color: #d4a017;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #444;
-  padding-bottom: 0.5rem;
-}
-
-.editor-section {
-  margin-bottom: 1.25rem;
-}
-
-.editor-section h3 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #888;
-  margin-bottom: 0.6rem;
-}
-
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 0.8rem;
-  color: #aaa;
-  margin-bottom: 0.6rem;
-}
-
-input, select, textarea {
-  background: #333;
-  border: 1px solid #555;
-  border-radius: 4px;
-  color: #e0e0e0;
-  padding: 6px 8px;
-  font-size: 0.85rem;
-  font-family: inherit;
-  width: 100%;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: 1px solid #d4a017;
-  border-color: #d4a017;
-}
-
-textarea { resize: vertical; }
-
-.hint {
-  font-size: 0.7rem;
-  color: #666;
-  font-style: italic;
-}
-
-/* Frame color picker */
-.frame-color-grid {
+.editor-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 0.75rem;
+  background: #161616;
+  border-bottom: 1px solid #3a3a3a;
+  gap: 0;
 }
 
-.frame-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 0.7rem;
-  font-weight: 700;
-  border: 2px solid transparent;
-  transition: transform 0.1s, border-color 0.1s;
-}
-
-.frame-btn.active {
-  border-color: #fff;
-  transform: scale(1.15);
-}
-
-.frame-btn--white  { background: #f9faf4; color: #333; }
-.frame-btn--blue   { background: #0e68ab; color: #fff; }
-.frame-btn--black  { background: #3c3c3c; color: #ddd; }
-.frame-btn--red    { background: #d3202a; color: #fff; }
-.frame-btn--green  { background: #00733e; color: #fff; }
-.frame-btn--gold   { background: linear-gradient(135deg, #c8a040, #e8d070, #c8a040); color: #333; }
-.frame-btn--colorless { background: #9e9e9e; color: #fff; }
-.frame-btn--land   { background: linear-gradient(135deg, #8b6914, #c8a040); color: #fff; }
-.frame-btn--vehicle { background: #8b4f1a; color: #fff; }
-
-/* Art upload */
-.art-upload-zone {
-  border: 2px dashed #555;
-  border-radius: 6px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #888;
+  padding: 8px 10px;
+  font-size: 0.72rem;
   cursor: pointer;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-  transition: border-color 0.2s;
-  color: #666;
-  font-size: 0.85rem;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
 }
 
-.art-upload-zone:hover {
-  border-color: #d4a017;
+.tab-btn:hover { color: #ccc; }
+
+.tab-btn.active {
+  color: #d4a017;
+  border-bottom-color: #d4a017;
 }
 
-.art-upload-zone img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* P/T row */
-.pt-row {
-  display: flex;
-  align-items: flex-end;
-  gap: 0.5rem;
-}
-
-.pt-slash {
-  font-size: 1.5rem;
-  color: #666;
-  padding-bottom: 4px;
+.editor-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 1rem;
 }
