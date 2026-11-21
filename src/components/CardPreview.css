@@ -62,6 +62,10 @@
   display: block;
 }
 
+/* ── Split guild frame: left and right halves ── */
+.card__frame-left  { clip-path: inset(0 50% 0 0); }
+.card__frame-right { clip-path: inset(0 0 0 50%); }
+
 /* ── Text layer — positioned above frame ── */
 .card__text-layer {
   position: absolute;

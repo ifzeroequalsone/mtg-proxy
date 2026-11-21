@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { parseManaCost, manaSymbolUrl } from '../utils/scryfallApi'
 import { RARITIES } from '../constants/frames'
-import { getFrameUrl, getPtUrl, WATERMARK_KEYRUNE_CLASS } from '../constants/frameAssets'
+import { getFrameUrl, getPtUrl, GUILD_SPLIT, WATERMARK_KEYRUNE_CLASS } from '../constants/frameAssets'
 import { exportCardAsPng } from '../utils/cardExport'
 import 'keyrune/css/keyrune.css'
 import './CardPreview.css'
@@ -74,7 +74,10 @@ export default function CardPreview({ card }) {
   const isCreature = /creature|vehicle/i.test(card.typeLine)
   const isPlaneswalker = /planeswalker/i.test(card.typeLine)
 
+  const guildSplit = GUILD_SPLIT[card.frameColor]
   const frameUrl = getFrameUrl(card.framePack, card.frameColor)
+  const frameUrlLeft = guildSplit ? getFrameUrl(card.framePack, guildSplit[0]) : null
+  const frameUrlRight = guildSplit ? getFrameUrl(card.framePack, guildSplit[1]) : null
   const ptUrl = getPtUrl(card.frameColor)
 
   const handleExport = () => {
@@ -106,13 +109,15 @@ export default function CardPreview({ card }) {
           )}
         </div>
 
-        {/* Frame overlay — sits above art */}
-        <img
-          className="card__frame-overlay"
-          src={frameUrl}
-          alt=""
-          crossOrigin="anonymous"
-        />
+        {/* Frame overlay — sits above art; guild colors use two half-frame overlays */}
+        {guildSplit ? (
+          <>
+            <img className="card__frame-overlay card__frame-left"  src={frameUrlLeft}  alt="" crossOrigin="anonymous" />
+            <img className="card__frame-overlay card__frame-right" src={frameUrlRight} alt="" crossOrigin="anonymous" />
+          </>
+        ) : (
+          <img className="card__frame-overlay" src={frameUrl} alt="" crossOrigin="anonymous" />
+        )}
 
         {/* Text layer — above frame */}
         <div className="card__text-layer">

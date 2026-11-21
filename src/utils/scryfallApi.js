@@ -25,6 +25,15 @@ export async function searchCardArt(query) {
   }
 }
 
+// Autocomplete card names as the user types
+export async function autocompleteCardName(query) {
+  if (!query || query.length < 2) return []
+  const res = await fetch(`${BASE}/cards/autocomplete?q=${encodeURIComponent(query)}`)
+  if (!res.ok) return []
+  const data = await res.json()
+  return data.data ?? []
+}
+
 export async function getCardPrints(printsUri) {
   const res = await fetch(printsUri)
   if (!res.ok) return []

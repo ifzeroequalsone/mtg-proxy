@@ -5,12 +5,18 @@
 const COLOR_SUFFIX = {
   W: 'W', U: 'U', B: 'B', R: 'R', G: 'G',
   gold: 'M', WUBRG: 'M',
-  colorless: 'A',  // Artifact frame for colorless
+  colorless: 'A',
   land: 'L',
   vehicle: 'V',
-  // Guilds fall back to gold/M
+  // Guilds: individually mapped so split rendering can use each half
   WU: 'M', UB: 'M', BR: 'M', RG: 'M', GW: 'M',
   WB: 'M', UR: 'M', BG: 'M', RW: 'M', GU: 'M',
+}
+
+// Two-color guild → [leftColorSuffix, rightColorSuffix] for split frame rendering
+export const GUILD_SPLIT = {
+  WU: ['W', 'U'], UB: ['U', 'B'], BR: ['B', 'R'], RG: ['R', 'G'], GW: ['G', 'W'],
+  WB: ['W', 'B'], UR: ['U', 'R'], BG: ['B', 'G'], RW: ['R', 'W'], GU: ['G', 'U'],
 }
 
 // PT box suffix (no V or L variant — fall back to M/A)
