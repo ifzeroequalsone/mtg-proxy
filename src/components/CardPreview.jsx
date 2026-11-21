@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import './CardPreview.css'
-import { parseManaSymbols, getRarityGlyph } from '../utils/cardUtils'
+import { parseManaSymbols, getRarityGlyph } from '../utils/cardUtils.jsx'
 
 export default function CardPreview({ card }) {
   const manaSymbols = useMemo(() => parseManaSymbols(card.manaCost), [card.manaCost])
